@@ -40,7 +40,7 @@ const Home = () => {
     }, [data])
 
     return (
-        data && <div>
+        data && <div className="home_div">
             <h1>The Weather</h1>
             <h3>{name}, {region}</h3>
             <img src={conditionIcon} alt={conditionText}></img>
@@ -49,6 +49,11 @@ const Home = () => {
             <p>Current Temp: {current_temp_f}</p>
             <p>Feels Like: {feelslike_f}</p>
             <p>Humidity: {humidity}</p>
+            <div className="forecast_btns">
+                <button className='btn'>3 Day</button>
+                <button className='btn'>5 Day</button>
+                <button className='btn'>10 Day</button>
+            </div>
             
         </div>
     )
