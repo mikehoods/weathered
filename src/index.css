@@ -28,16 +28,8 @@ code {
   border-radius: 12px;
 }
 
-.forecast_btns {
-  display: flex;
-  justify-content: center;
-}
-
-.btn {
-  background-color: #845460;
-  padding: 8px;
-  color: #eeeeee;
+.daily_div {
+  border: 1px solid #2B4F60;
   border-radius: 12px;
-  border: none;
-  margin: 4px 8px;
+  margin: 10px 0;
 }

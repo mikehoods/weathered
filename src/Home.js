@@ -2,7 +2,7 @@ import useFetch from './useFetch';
 import { useState, useEffect } from 'react';
 
 const Home = () => {
-    const { data, isLoading, error } = useFetch('https://api.weatherapi.com/v1/forecast.json?key=085fc788f90f4c55af7214215210710&q=78745&days=5')
+    const { data, isLoading, error } = useFetch('https://api.weatherapi.com/v1/forecast.json?key=085fc788f90f4c55af7214215210710&q=78745&days=3')
 
     const [name, setName] = useState(null);
     const [region, setRegion] = useState(null);
@@ -12,6 +12,7 @@ const Home = () => {
     const [humidity, setHumidity] = useState(null);
     const [conditionIcon, setConditionIcon] = useState(null);
     const [conditionText, setConditionText] = useState(null);
+    const [forecast, setForecast] = useState(null);
 
     const formatTime = (date) => {
         date = new Date(date);
@@ -36,6 +37,7 @@ const Home = () => {
             setHumidity(data.current.humidity + '%')
             setConditionIcon(data.current.condition.icon)
             setConditionText(data.current.condition.text)
+            setForecast(data.forecast.forecastday)
         }
     }, [data])
 
@@ -49,10 +51,18 @@ const Home = () => {
             <p>Current Temp: {current_temp_f}</p>
             <p>Feels Like: {feelslike_f}</p>
             <p>Humidity: {humidity}</p>
-            <div className="forecast_btns">
-                <button className='btn'>3 Day</button>
-                <button className='btn'>5 Day</button>
-                <button className='btn'>10 Day</button>
+            <div className="forecast_div">
+                <h2>Three Day Forecast</h2>
+                {forecast && forecast.map((day, i) => (
+                    <div className="daily_div" key={i}>
+                        <p>{day.date}</p>
+                        <img src={day.day.condition.icon} alt={day.day.condition.icon}></img>
+                        <p>High: {day.day.maxtemp_f} F</p>
+                        <p>Low: {day.day.mintemp_f} F</p>
+                        <p>Chance of Rain: {day.day.daily_chance_of_rain}%</p>
+                        <p>Sunset: {day.astro.sunset}</p>
+                    </div>
+                ))}
             </div>
             
         </div>
