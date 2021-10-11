@@ -2,7 +2,11 @@ import useFetch from './useFetch';
 import { useState, useEffect } from 'react';
 
 const Home = () => {
-    const { data, isLoading, error } = useFetch('https://api.weatherapi.com/v1/forecast.json?key=085fc788f90f4c55af7214215210710&q=78745&days=3')
+    const [location, setLocation] = useState('78745');
+    const [http, SetHttp] = useState('https://api.weatherapi.com/v1/forecast.json?key=085fc788f90f4c55af7214215210710&days=3&q=')
+    const [url, setUrl] = useState(http + location)
+
+    const { data, isLoading, error } = useFetch(url)
 
     const [name, setName] = useState(null);
     const [region, setRegion] = useState(null);
@@ -25,7 +29,6 @@ const Home = () => {
         return `${hours}:${minutes} ${ampm}`
     }
 
-
     useEffect(() => {
         if (data) {
             console.log(data)
@@ -44,6 +47,10 @@ const Home = () => {
     return (
         data && <div className="home_div">
             <h1>The Weather</h1>
+            <form onSubmit={(e) => {e.preventDefault(); setUrl(http + location)}}>
+                <input type='text' value={location} onChange={(e) => {setLocation(e.target.value)}}></input>
+                <input type='submit' value="Search By Zip Code" ></input>
+            </form>
             <h3>{name}, {region}</h3>
             <img src={conditionIcon} alt={conditionText}></img>
             <p>Condition: {conditionText}</p>
