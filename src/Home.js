@@ -29,6 +29,13 @@ const Home = () => {
         return `${hours}:${minutes} ${ampm}`
     }
 
+    const formatDay = (date) => {
+        date = new Date(date);
+        const day = date.getDay();
+        const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        return weekday[day]
+    }
+
     useEffect(() => {
         if (data) {
             console.log(data)
@@ -46,8 +53,8 @@ const Home = () => {
 
     return (
         data && <div className="home_div">
-            <h1>The Weather</h1>
-            <form onSubmit={(e) => {e.preventDefault(); setUrl(http + location)}}>
+            <h1>Weathered</h1>
+            <form className="search_form" onSubmit={(e) => {e.preventDefault(); setUrl(http + location)}}>
                 <input type='text' value={location} onChange={(e) => {setLocation(e.target.value)}}></input>
                 <input type='submit' value="Search By Zip Code" ></input>
             </form>
@@ -62,7 +69,7 @@ const Home = () => {
                 <h2>Three Day Forecast</h2>
                 {forecast && forecast.map((day, i) => (
                     <div className="daily_div" key={i}>
-                        <p>{day.date}</p>
+                        <p>{formatDay(day.date)}</p>
                         <img src={day.day.condition.icon} alt={day.day.condition.icon}></img>
                         <p>High: {day.day.maxtemp_f} F</p>
                         <p>Low: {day.day.mintemp_f} F</p>

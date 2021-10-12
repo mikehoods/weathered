@@ -28,6 +28,18 @@ code {
   border-radius: 12px;
 }
 
+input {
+  margin: 6px 8px;
+  border-radius: 6px;
+  padding: 6px;
+  border: 1px solid #2B4F60;
+}
+
+input[type='submit'] {
+  background-color: #2B4F60;
+  color: #eeeeee;
+}
+
 .daily_div {
   border: 1px solid #2B4F60;
   border-radius: 12px;
