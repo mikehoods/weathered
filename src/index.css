@@ -181,6 +181,10 @@ input[type='submit'] {
     padding: 12px 6px;
   }
 
+  .forecast_div {
+    border-radius: 0;
+  }
+
   p {
     font-size: 14px;
   }
