@@ -1,4 +1,5 @@
 import useFetch from './useFetch';
+import { formatDay, formatTime } from './useFormat';
 import { useState, useEffect } from 'react';
 
 const Home = () => {
@@ -18,24 +19,6 @@ const Home = () => {
     const [conditionText, setConditionText] = useState(null);
     const [forecast, setForecast] = useState(null);
 
-    const formatTime = (date) => {
-        date = new Date(date);
-        let hours = date.getHours();
-        const ampm = hours >=12 ? 'PM' : 'AM';
-        hours = hours % 12;
-        hours = hours ? hours : 12;
-        let minutes = date.getMinutes();
-        minutes = minutes < 10 ? '0' + minutes : minutes;
-        return `${hours}:${minutes} ${ampm}`
-    }
-
-    const formatDay = (date) => {
-        date = new Date(date);
-        const day = date.getDay();
-        const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-        return weekday[day]
-    }
-
     useEffect(() => {
         if (data) {
             console.log(data)
@@ -53,28 +36,50 @@ const Home = () => {
 
     return (
         data && <div className="home_div">
-            <h1>Weathered</h1>
-            <form className="search_form" onSubmit={(e) => {e.preventDefault(); setUrl(http + location)}}>
-                <input type='text' value={location} onChange={(e) => {setLocation(e.target.value)}}></input>
-                <input type='submit' value="Search By Zip Code" ></input>
-            </form>
-            <h3>{name}, {region}</h3>
-            <img src={conditionIcon} alt={conditionText}></img>
-            <p>Condition: {conditionText}</p>
-            <p>Local time: {localtime}</p>
-            <p>Current Temp: {current_temp_f}</p>
-            <p>Feels Like: {feelslike_f}</p>
-            <p>Humidity: {humidity}</p>
+            <div className="header_div">
+                <h1>Weathered</h1>
+                <form className="search_form" onSubmit={(e) => {e.preventDefault(); setUrl(http + location)}}>
+                    <input type='text' value={location} onChange={(e) => {setLocation(e.target.value)}}></input>
+                    <input type='submit' value="Search By Zip Code" ></input>
+                </form>
+            </div>
+            <div className="main_div">
+                <div className="locationHeader_div">
+                    <div className="name_div">
+                        <img src={conditionIcon} alt={conditionText}></img>
+                        <h3>{name}, {region}</h3>
+                    </div>
+                    <p>{localtime}</p>
+                    <div className="temps_div">
+                        <p>Current Temp: <span className="temp_span">{current_temp_f}</span></p>
+                        <p>Feels Like: <span className="temp_span">{feelslike_f}</span></p>
+                    </div>
+                </div>
+                <div className="condition_div">
+                    <p>Condition: {conditionText}</p>
+                    <p>Humidity: {humidity}</p>
+                </div>
+            </div>
+            
             <div className="forecast_div">
-                <h2>Three Day Forecast</h2>
+                <h2 className="forecast_h2">Three Day Forecast</h2>
                 {forecast && forecast.map((day, i) => (
                     <div className="daily_div" key={i}>
-                        <p>{formatDay(day.date)}</p>
-                        <img src={day.day.condition.icon} alt={day.day.condition.icon}></img>
-                        <p>High: {day.day.maxtemp_f} F</p>
-                        <p>Low: {day.day.mintemp_f} F</p>
-                        <p>Chance of Rain: {day.day.daily_chance_of_rain}%</p>
-                        <p>Sunset: {day.astro.sunset}</p>
+                        <div className="weekday_div">
+                            <div className="dayName_div">
+                                <img src={day.day.condition.icon} alt={day.day.condition.icon}></img>
+                                <p className="day_p">{formatDay(day.date)}</p>
+                            </div>
+                            <div className="hiLo_div">
+                                <p>High: <span className="temp_span">{day.day.maxtemp_f} F</span></p>
+                                <p>Low: <span className="temp_span">{day.day.mintemp_f} F</span></p>
+                            </div>
+                        </div>
+                        <div className="rainSunset_div">
+                            <p>Rain: {day.day.daily_chance_of_rain}%</p>
+                            <p>UV Index: {day.day.uv}</p>
+                            <p>Sunset: {day.astro.sunset}</p>
+                        </div>
                     </div>
                 ))}
             </div>
