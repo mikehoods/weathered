@@ -35,7 +35,8 @@ const Home = () => {
     }, [data])
 
     return (
-        data && <div className="home_div">
+        data && <div className="copyright_wrapper">
+        <div className="home_div">
             <div className="header_div">
                 <h1>Weathered</h1>
                 <form className="search_form" onSubmit={(e) => {e.preventDefault(); setUrl(http + location)}}>
@@ -86,7 +87,8 @@ const Home = () => {
                     </div>
                 ))}
             </div>
-            
+        </div>
+        <p>&copy; 2021 Mike Hood</p>
         </div>
     )
 }
