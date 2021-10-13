@@ -25,8 +25,8 @@ const Home = () => {
             setName(data.location.name)
             setRegion(data.location.region)
             setLocalTime(formatTime(data.location.localtime))
-            setCurrent_temp_f(data.current.temp_f + ' F')
-            setFeelslike_f(data.current.feelslike_f + ' F')
+            setCurrent_temp_f(data.current.temp_f)
+            setFeelslike_f(data.current.feelslike_f)
             setHumidity(data.current.humidity + '%')
             setConditionIcon(data.current.condition.icon)
             setConditionText(data.current.condition.text)
@@ -44,23 +44,26 @@ const Home = () => {
                 </form>
             </div>
             <div className="main_div">
-                <div className="locationHeader_div">
-                    <div className="name_div">
-                        <img src={conditionIcon} alt={conditionText}></img>
-                        <h3>{name}, {region}</h3>
+                <div className="current_div">
+                    <div className="locationHeader_div">
+                        <div className="condition_div">
+                            <img src={conditionIcon} alt={conditionText}></img>
+                            <div className="name_div">
+                                <h3>{name}, {region}</h3>
+                                <p>{localtime}</p>
+                            </div>
+                        </div>
+                        <div className="temps_div">
+                            <p className="temp_p">Current: <span className="temp_span">{current_temp_f}</span></p>
+                            <p className="temp_p">Feels Like: <span className="temp_span">{feelslike_f}</span></p>
+                        </div>
                     </div>
-                    <p>{localtime}</p>
-                    <div className="temps_div">
-                        <p>Current Temp: <span className="temp_span">{current_temp_f}</span></p>
-                        <p>Feels Like: <span className="temp_span">{feelslike_f}</span></p>
+                    <div className="condition_div">
+                        <p>Condition: {conditionText}</p>
+                        <p>Humidity: {humidity}</p>
                     </div>
-                </div>
-                <div className="condition_div">
-                    <p>Condition: {conditionText}</p>
-                    <p>Humidity: {humidity}</p>
-                </div>
+                </div> 
             </div>
-            
             <div className="forecast_div">
                 <h2 className="forecast_h2">Three Day Forecast</h2>
                 {forecast && forecast.map((day, i) => (
@@ -71,8 +74,8 @@ const Home = () => {
                                 <p className="day_p">{formatDay(day.date)}</p>
                             </div>
                             <div className="hiLo_div">
-                                <p>High: <span className="temp_span">{day.day.maxtemp_f} F</span></p>
-                                <p>Low: <span className="temp_span">{day.day.mintemp_f} F</span></p>
+                                <p className="temp_p">High: <span className="temp_span">{day.day.maxtemp_f}</span></p>
+                                <p className="temp_p">Low: <span className="temp_span">{day.day.mintemp_f}</span></p>
                             </div>
                         </div>
                         <div className="rainSunset_div">

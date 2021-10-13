@@ -32,7 +32,7 @@ code {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 12px;
+  padding: 0 12px 10px 12px;
 }
 
 .header_div h1 {
@@ -64,9 +64,14 @@ input[type='submit'] {
 }
 
 .main_div {
+  background-color: #845460;
+  padding: 12px;
+}
+
+.current_div {
   border: 1px solid #2B4F60;
   border-radius: 12px;
-  margin: 12px;
+  background-color: #eeeeee;
 }
 
 .locationHeader_div {
@@ -80,9 +85,17 @@ input[type='submit'] {
   margin: 6px 0;
 }
 
-.name_div {
+.condition_div {
   display: flex;
-  justify-content: center;
+  align-items: center;
+}
+
+.name_div {
+  display: block;
+}
+
+.name_div h3 {
+  margin: 0;
 }
 
 .temps_div {
@@ -92,18 +105,19 @@ input[type='submit'] {
 
 .condition_div {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 12px;
 }
 
 .forecast_div {
-  background-color: #845460;
+  background-color: #EAD3CB;
   padding: 12px;
   border-radius: 0 0 12px 12px;
 }
 
 .forecast_h2 {
   margin: 0;
-  font-weight: 900;
+  font-weight: 400;
 }
 
 .daily_div {
@@ -150,4 +164,32 @@ input[type='submit'] {
 .rainSunset_div {
   display: flex;
   justify-content: space-around;
+}
+
+/* Mobile Styling */
+
+@media only screen and (max-width: 600px) {
+  .app {
+    margin: 0;
+  }
+
+  .home_div {
+    border-radius: 0;
+  }
+
+  .main_div, .forecast_div {
+    padding: 12px 6px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .temp_p {
+    font-size: 10px;
+  }
+
+  .header_div {
+    display: block;
+  }
 }
