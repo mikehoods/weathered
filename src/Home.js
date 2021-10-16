@@ -40,7 +40,7 @@ const Home = () => {
             <div className="header_div">
                 <h1>Weathered</h1>
                 <form className="search_form" onSubmit={(e) => {e.preventDefault(); setUrl(http + location)}}>
-                    <input type='text' value={location} onChange={(e) => {setLocation(e.target.value)}}></input>
+                    <input type="text" maxLength="5" pattern="^\d{5}$" value={location} onChange={(e) => {setLocation(e.target.value)}}></input>
                     <input type='submit' value="Search By Zip Code" ></input>
                 </form>
             </div>
@@ -55,8 +55,8 @@ const Home = () => {
                             </div>
                         </div>
                         <div className="temps_div">
-                            <p className="temp_p">Current: <span className="temp_span">{current_temp_f}</span></p>
-                            <p className="temp_p">Feels Like: <span className="temp_span">{feelslike_f}</span></p>
+                            <p className="temp_p">Current: <span className="temp_span">{current_temp_f}&deg;</span></p>
+                            <p className="temp_p">Feels Like: <span className="temp_span">{feelslike_f}&deg;</span></p>
                         </div>
                     </div>
                     <div className="condition_div">
@@ -75,8 +75,8 @@ const Home = () => {
                                 <p className="day_p">{formatDay(day.date)}</p>
                             </div>
                             <div className="hiLo_div">
-                                <p className="temp_p">High: <span className="temp_span">{day.day.maxtemp_f}</span></p>
-                                <p className="temp_p">Low: <span className="temp_span">{day.day.mintemp_f}</span></p>
+                                <p className="temp_p">High: <span className="temp_span">{day.day.maxtemp_f}&deg;</span></p>
+                                <p className="temp_p">Low: <span className="temp_span">{day.day.mintemp_f}&deg;</span></p>
                             </div>
                         </div>
                         <div className="rainSunset_div">

@@ -13,5 +13,5 @@ export const formatDay = (date) => {
     date = new Date(date);
     const day = date.getDay();
     const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    return weekday[day]
+    return weekday[day === 6 ? 0 : day + 1]
 }
