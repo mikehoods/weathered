@@ -60,8 +60,8 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="condition_div">
-                        <p>Condition: {conditionText}</p>
-                        <p>Humidity: {humidity}</p>
+                        <p className="data_p">Condition: {conditionText}</p>
+                        <p className="data_p">Humidity: {humidity}</p>
                     </div>
                 </div> 
             </div>
@@ -80,9 +80,9 @@ const Home = () => {
                             </div>
                         </div>
                         <div className="rainSunset_div">
-                            <p>Rain: {day.day.daily_chance_of_rain}%</p>
-                            <p>UV Index: {day.day.uv}</p>
-                            <p>Sunset: {day.astro.sunset}</p>
+                            <p className="data_p">Rain: {day.day.daily_chance_of_rain}%</p>
+                            <p className="data_p">UV Index: {day.day.uv}</p>
+                            <p className="data_p">Sunset: {day.astro.sunset}</p>
                         </div>
                     </div>
                 ))}

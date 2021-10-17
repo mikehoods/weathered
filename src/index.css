@@ -105,9 +105,13 @@ input[type='submit'] {
   text-align: right;
 }
 
+.temp_p, .data_p {
+  font-size: 14px;
+}
+
 .condition_div {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 0 12px;
 }
 
