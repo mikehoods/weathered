@@ -1,5 +1,5 @@
 import useFetch from './useFetch';
-import { formatDay, formatTime } from './useFormat';
+import { formatDay, formatTime, formatHourly, currentHour } from './useFormat';
 import { useState, useEffect } from 'react';
 
 const Home = () => {
@@ -14,6 +14,7 @@ const Home = () => {
     const [localtime, setLocalTime] = useState(null);
     const [current_temp_f, setCurrent_temp_f] = useState(null);
     const [feelslike_f, setFeelslike_f] = useState(null);
+    const [hourly, setHourly] = useState(null);
     const [humidity, setHumidity] = useState(null);
     const [conditionIcon, setConditionIcon] = useState(null);
     const [conditionText, setConditionText] = useState(null);
@@ -27,6 +28,7 @@ const Home = () => {
             setLocalTime(formatTime(data.location.localtime))
             setCurrent_temp_f(data.current.temp_f)
             setFeelslike_f(data.current.feelslike_f)
+            setHourly([...data.forecast.forecastday[0].hour, ...data.forecast.forecastday[1].hour])
             setHumidity(data.current.humidity + '%')
             setConditionIcon(data.current.condition.icon)
             setConditionText(data.current.condition.text)
@@ -58,6 +60,15 @@ const Home = () => {
                             <p className="temp_p">Current: <span className="temp_span">{current_temp_f}&deg;</span></p>
                             <p className="temp_p">Feels Like: <span className="temp_span">{feelslike_f}&deg;</span></p>
                         </div>
+                    </div>
+                    <div className="hourly">
+                        {hourly && hourly.slice(currentHour(data.location.localtime), currentHour(data.location.localtime) + 24).map((hour, i) => (
+                            <div className="hour_div" key={i}>
+                                <p className="hourly_time">{formatHourly(hour.time)}</p>
+                                <img src={hour.condition.icon} alt={hour.condition.text}></img>
+                                <p className="hourly_temp">{hour.temp_f}&deg;</p>
+                            </div>
+                        ))}
                     </div>
                     <div className="condition_div">
                         <p className="data_p">Condition: {conditionText}</p>

@@ -109,6 +109,21 @@ input[type='submit'] {
   font-size: 14px;
 }
 
+.hourly {
+  width: 85%;
+  display: flex;
+  overflow-y: hidden;
+  margin: auto;
+}
+
+.hourly_time {
+  margin-bottom: 7px;
+}
+
+.hourly_temp {
+  margin-top: 7px;
+}
+
 .condition_div {
   display: flex;
   justify-content: space-around;

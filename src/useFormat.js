@@ -15,3 +15,18 @@ export const formatDay = (date) => {
     const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     return weekday[day === 6 ? 0 : day + 1]
 }
+
+export const formatHourly = (date) => {
+    date = new Date(date);
+    let hour = date.getHours();
+    const ampm = hour >=12 ? 'PM' : 'AM';
+    hour = hour % 12;
+    hour = hour ? hour : 12;
+    return `${hour} ${ampm}`
+}
+
+export const currentHour = (date) => {
+    date = new Date(date);
+    let currentHour = date.getHours();
+    return currentHour
+}
