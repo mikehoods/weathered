@@ -26,8 +26,8 @@ const Home = () => {
             setName(data.location.name)
             setRegion(data.location.region)
             setLocalTime(formatTime(data.location.localtime))
-            setCurrent_temp_f(data.current.temp_f)
-            setFeelslike_f(data.current.feelslike_f)
+            setCurrent_temp_f(Math.round(data.current.temp_f))
+            setFeelslike_f(Math.round(data.current.feelslike_f))
             setHourly([...data.forecast.forecastday[0].hour, ...data.forecast.forecastday[1].hour])
             setHumidity(data.current.humidity + '%')
             setConditionIcon(data.current.condition.icon)
@@ -66,14 +66,14 @@ const Home = () => {
                             <div className="hour_div" key={i}>
                                 <p className="hourly_time">{formatHourly(hour.time)}</p>
                                 <img src={hour.condition.icon} alt={hour.condition.text}></img>
-                                <p className="hourly_temp">{hour.temp_f}&deg;</p>
+                                <p className="hourly_temp">{Math.round(hour.temp_f)}&deg;</p>
                             </div>
                         ))}
                     </div>
-                    <div className="condition_div">
+                    {/* <div className="condition_div">
                         <p className="data_p">Condition: {conditionText}</p>
                         <p className="data_p">Humidity: {humidity}</p>
-                    </div>
+                    </div> */}
                 </div> 
             </div>
             <div className="forecast_div">
@@ -86,8 +86,8 @@ const Home = () => {
                                 <p className="day_p">{formatDay(day.date)}</p>
                             </div>
                             <div className="hiLo_div">
-                                <p className="temp_p">High: <span className="temp_span">{day.day.maxtemp_f}&deg;</span></p>
-                                <p className="temp_p">Low: <span className="temp_span">{day.day.mintemp_f}&deg;</span></p>
+                                <p className="temp_p">High: <span className="temp_span">{Math.round(day.day.maxtemp_f)}&deg;</span></p>
+                                <p className="temp_p">Low: <span className="temp_span">{Math.round(day.day.mintemp_f)}&deg;</span></p>
                             </div>
                         </div>
                         <div className="rainSunset_div">

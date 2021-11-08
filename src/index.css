@@ -110,7 +110,7 @@ input[type='submit'] {
 }
 
 .hourly {
-  width: 85%;
+  width: 448px;
   display: flex;
   overflow-y: hidden;
   margin: auto;
@@ -203,6 +203,10 @@ input[type='submit'] {
 
   .main_div, .forecast_div {
     padding: 12px 6px;
+  }
+
+  .hourly {
+    max-width: 384px;
   }
 
   .forecast_div {
