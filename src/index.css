@@ -17,7 +17,7 @@ code {
 .app {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin: 30px 0 15px 0;
 }
 
 .copyright_wrapper {
@@ -80,7 +80,6 @@ input[type='submit'] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 14px;
 }
 
 .locationHeader_div p {
@@ -188,6 +187,10 @@ input[type='submit'] {
 .rainSunset_div {
   display: flex;
   justify-content: space-around;
+}
+
+.copyright_p {
+  margin-bottom: 0;
 }
 
 /* Mobile Styling */

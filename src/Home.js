@@ -99,7 +99,7 @@ const Home = () => {
                 ))}
             </div>
         </div>
-        <p>&copy; 2021 Mike Hood</p>
+        <p className="copyright_p">&copy; 2021 Mike Hood</p>
         </div>
     )
 }
