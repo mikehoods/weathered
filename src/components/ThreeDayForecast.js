@@ -5,7 +5,7 @@ export default function ThreeDayForecast({ forecast }) {
         <div className="forecast_div">
             <h2 className="forecast_h2">Three Day Forecast</h2>
             {forecast && forecast.map((day, i) => (
-                <SingleDayForecast day={day} i={i} />
+                <SingleDayForecast day={day} key={i} />
             ))}
         </div>
     )
