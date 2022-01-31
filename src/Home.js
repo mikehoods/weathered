@@ -7,7 +7,7 @@ import Header from './components/Header';
 import ThreeDayForecast from './components/ThreeDayForecast';
 
 const Home = () => {
-    const [location, setLocation] = useState('78745');
+    const [location, setLocation] = useState('Austin, TX');
     const [http, SetHttp] = useState('https://api.weatherapi.com/v1/forecast.json?key=085fc788f90f4c55af7214215210710&days=3&q=')
     const [url, setUrl] = useState(http + location)
 

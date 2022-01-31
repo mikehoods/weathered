@@ -42,6 +42,60 @@ code {
   margin: 0;
 }
 
+.search_form {
+  align-items: center;
+  display: flex
+}
+
+.help .question {
+  background-color: rgb(148, 148, 249);
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  font-weight: 800;
+  height: 18px;
+  margin: 0;
+  padding: 3px 7px;
+  width: 10px;
+}
+
+.help .popup {
+  background: #eee;
+  border: solid 1px #2B4F60;
+  border-radius: 12px;
+  height: 0px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 20px;
+  text-align: left;
+  top: 50px;
+  transition: 1s;
+  width: 450px;
+}
+
+.help:hover .popup {
+  opacity: 1;
+  height: 270px;
+}
+
+.help .popup h3 {
+  background: #2B4F60;
+  color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+  height: 30px;
+  margin: 0;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.help .popup li {
+  font-size: 14px;
+  margin: 0;
+  padding: 6px 0;
+}
+
 .location_div {
   display: flex;
   justify-content: center;
@@ -57,7 +111,7 @@ input {
 }
 
 input[type='text'] {
-  max-width: 50px;
+  max-width: 400px;
   text-align: center;
 }
 
@@ -226,5 +280,33 @@ input[type='submit'] {
 
   .header_div {
     display: block;
+  }
+
+  .search_form {
+    justify-content: center;
+  }
+
+  .help .popup {
+    right: 15px;
+    top: 60px;
+    width: 250px;
+  }
+  .help:hover .popup {
+    height: 255px;
+  }
+  
+  .help .popup h3 {
+    font-weight: 500;
+    font-size: 14px;
+  }
+  
+  .help .popup ul {
+    margin-top: 10px;
+    padding-left: 22px;
+  }
+
+  .help .popup li {
+    font-size: 12px;
+    padding: 6px 0 6px 10px;
   }
 }
