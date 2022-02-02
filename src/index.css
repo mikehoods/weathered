@@ -243,6 +243,11 @@ input[type='submit'] {
   justify-content: space-around;
 }
 
+.expandedForecast {
+  padding: 10px;
+  text-align: left;
+}
+
 .copyright_p {
   margin-bottom: 0;
 }
