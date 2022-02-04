@@ -162,7 +162,7 @@ input[type='submit'] {
   font-size: 14px;
 }
 
-.hourly {
+.hourly { 
   width: 448px;
   display: flex;
   overflow-y: hidden;
@@ -196,6 +196,7 @@ input[type='submit'] {
 
 .daily_div {
   border-radius: 12px;
+  cursor: pointer;
   margin: 10px 0;
   background-color: #eeeeee;
 }

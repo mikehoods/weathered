@@ -13,8 +13,7 @@ function InfoButton() {
                     <li><strong>Canada postal code: </strong>G2J</li>
                     <li><strong>3 digit airport code: </strong>DXB</li>
                     <li><strong>metar:(metar code): </strong>metar:EGLL</li>
-                </ul>
-                
+                </ul>   
             </div>
         </div>
     )
