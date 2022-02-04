@@ -30,3 +30,8 @@ export const currentHour = (date) => {
     let currentHour = date.getHours();
     return currentHour
 }
+
+export const formatTimeString = (time) => {
+    const newTime = time[0] === '0' ? time.slice(1) : time
+    return newTime
+}
