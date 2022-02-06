@@ -245,8 +245,21 @@ input[type='submit'] {
 }
 
 .expandedForecast {
+  display: flex;
+  justify-content: space-evenly;
   padding: 10px;
   text-align: left;
+}
+
+.icon_div {
+  align-items: center;
+  display: flex;
+}
+
+.icon {
+  height: 18px;
+  padding-right: 6px;
+  width: 18px;
 }
 
 .copyright_p {
