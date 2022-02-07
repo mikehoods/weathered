@@ -1,6 +1,6 @@
 import HourlyForecast from './HourlyForecast';
 
-export default function CurrentDay({
+function CurrentDay({
     conditionIcon,
     conditionText,
     current_temp_f,
@@ -30,3 +30,5 @@ export default function CurrentDay({
         </div>
     )
 }
+
+export default CurrentDay;

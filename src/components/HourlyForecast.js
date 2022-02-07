@@ -2,7 +2,7 @@ import React from 'react'
 
 import { formatHourly, currentHour } from '../formatDateTime';
 
-export default function HourlyForecast({ data, hourly}) {
+function HourlyForecast({ data, hourly}) {
     return (
         <div className="hourly">
             {hourly && hourly.slice(currentHour(data.location.localtime), currentHour(data.location.localtime) + 24).map((hour, i) => (
@@ -15,3 +15,5 @@ export default function HourlyForecast({ data, hourly}) {
         </div>
     )
 }
+
+export default HourlyForecast;

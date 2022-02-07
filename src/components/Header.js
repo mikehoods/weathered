@@ -1,6 +1,6 @@
 import SearchLocationInput from './SearchLocationInput';
 
-export default function Header({ http, location, setLocation, setUrl }) {
+function Header({ http, location, setLocation, setUrl }) {
     return (
         <div className="header_div">
             <h1>Weathered</h1>
@@ -13,3 +13,5 @@ export default function Header({ http, location, setLocation, setUrl }) {
         </div>
     )
 }
+
+export default Header;
